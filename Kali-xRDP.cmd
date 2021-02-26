@@ -2,8 +2,8 @@
 IF %ERRORLEVEL% == 0 (ECHO Administrator check passed...) ELSE (ECHO You need to run this command with administrative rights.  Is User Account Control enabled? && pause && goto ENDSCRIPT)
 COLOR 1F
 SET GITORG=DesktopECHO
-SET GITPRJ=xWSL
-SET BRANCH=KaliWSL
+SET GITPRJ=Kali-xWSL
+SET BRANCH=main
 SET BASE=https://github.com/%GITORG%/%GITPRJ%/raw/%BRANCH%
 
 REM ## Enable WSL if needed
@@ -22,7 +22,7 @@ REM ## Acquire LxRunOffline
 IF NOT EXIST "%TEMP%\LxRunOffline.exe" POWERSHELL.EXE -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 ; wget https://github.com/DDoSolitary/LxRunOffline/releases/download/v3.5.0/LxRunOffline-v3.5.0-msvc.zip -UseBasicParsing -OutFile '%TEMP%\LxRunOffline-v3.5.0-msvc.zip' ; Expand-Archive -Path '%TEMP%\LxRunOffline-v3.5.0-msvc.zip' -DestinationPath '%TEMP%' -Force" > NUL
 MKDIR %TEMP%\Kali-xRDP >NUL 2>&1 
 
-ECHO [Kali xRDP Installer 20210225]
+ECHO [Kali-xRDP Installer 20210225]
 ECHO:
 ECHO Hit Enter to use your current display scaling in Windows
 SET /p WINDPI=or set the desired value (1.0 to 3.0 in .25 increments) [%WINDPI%]: 
@@ -137,10 +137,10 @@ ECHO:
 ECHO:  - (Re)launch init from the Task Scheduler or by running the following command: 
 ECHO:    schtasks.exe /run /tn %DISTRO%
 ECHO: 
-ECHO: Installaion of xRDP GUI on "%DISTRO%" complete, graphical login will start in a few seconds...  
+ECHO: Installaion of Kali-xWSL (%DISTRO%) complete, RDP login will start in a few seconds...  
 %TEMP%\LxRunOffline.exe set-uid -n "%DISTRO%" -v 1001
 PING -n 6 LOCALHOST > NUL 
-START "Remote Desktop Connection" "MSTSC.EXE" "/V" "%DISTROFULL%\%DISTRO% (%XU%) Desktop.rdp"
+START "Remote Desktop Connection" "MSTSC.EXE" "/V" "Kali-xRDP (%XU%).rdp"
 CD ..
 ECHO: 
 :ENDSCRIPT
