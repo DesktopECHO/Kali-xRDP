@@ -8,11 +8,11 @@ The install script is meant to be run on a new Kali installation from the Micros
 
 **INSTRUCTIONS:  Open a NEW elevated command prompt window (admin rights are required to open firewall ports for RDP and SSH) then type/paste the following command:**
 
-    PowerShell -executionpolicy bypass -command "wget https://github.com/DesktopECHO/xWSL/raw/KaliWSL/xWSL-Kali.cmd -UseBasicParsing -OutFile xWSL-Kali.cmd ; .\xWSL-Kali.cmd"
-
+    PowerShell -executionpolicy bypass -command "wget https://github.com/DesktopECHO/Kali-xRDP/raw/main/Kali-xRDP.cmd -UseBasicParsing -OutFile Kali-xRDP.cmd ; .\Kali-xRDP.cmd"
+    
 You will be asked a few questions.  The installer script determines the current Windows DPI scaling of your system but you may set your own if preferred:
 
-     [Kali xRDP Installer 20210223]
+     [Kali xRDP Installer 20210225]
 
      Hit Enter to use your current display scaling in Windows
      or set the desired value (1.0 to 3.0 in .25 increments) [1.5]: 1.25
