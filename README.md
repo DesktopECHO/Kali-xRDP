@@ -2,7 +2,7 @@
 
 Kali-xRDP is a fully-automated script to install xRDP on Kali Linux from the Windows Store.  It works under WSL1 or WSL2, is able to switch between either without issue, and includes optimizations and visual tweaks to provide a smooth and responsive desktop experience.  
 
-Other Kali GUI-installers are designed to work with WSL2 only.  Kali-xRDP works with Windows 10 version 1809 and newer, Windows Server 2019, Server Core, or Hyper-V Server 2019.  This is useful when you're on older hardware without VT-d, or in a virtual machine without nested virtualization support.  Note that WSL1 has limitations in its networking stack that prevent some of Kali's included tools from working as they should.  
+Other Kali GUI-installers are designed to work with WSL2 only.  Kali-xRDP works in WSL1 on Windows 10 version 1809 and newer, Windows Server 2019, Server Core, or Hyper-V Server 2019.  This can be useful when you're on older hardware without VT-d, or in a virtual machine without nested virtualization support.  Note that WSL1 has limitations in its networking stack that prevent some of Kali's included tools from working as they should.  
 
 The install script is meant to be run on a new Kali installation from the Microsoft Store.  If Kali is not detected on your system it will download the .AppX image from Microsoft and install it for you. 
 
