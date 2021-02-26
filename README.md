@@ -63,26 +63,23 @@ Reboot your PC when complete and the xRDP service in Kali will startup automatic
 
 **Start/Stop Operation**
 
-* Reboot the instance (example with default distro name of 'xWSL'): ````schtasks /run /tn kali-linux```` 
+* Restart the instance: ````schtasks /run /tn kali-linux```` 
 * Terminate the instance: ````wslconfig /t kali-linux````
 
-**xWSL leverages Multicast DNS to lookup WSL2 instances**
+**Convert to WSL2 instance**
 
-If your computer has virtualization support you can convert it to WSL2.  xWSL is faster on WSL1, but WSL2 has additional capabilities. 
+If your computer has virtualization support you can convert the instance to WSL2. 
 
-Example of conversion to WSL2 on machine name "LAPTOP":
- - Stop WSL on LAPTOP:
-    ````wsl --shutdown````
+ - Terminate the instance:
+    ````wslconfig /t kali-linux````
  - Convert the instance to WSL2:
-    ````wsl --set-version xWSL 2````
+    ````wsl --set-version kali-linux 2````
  - Restart kWSL Instance:
     ````schtasks /run /tn kali-linux````
- - Edit the RDP file on your desktop to point at the WSL2 instance by adding ````-kali-linux.local```` to the hostname:
-    ````LAPTOP-kali-linux.local:3399````
 
 **Make it your own:**
 
-From a security standpoint, it would be best to fork this project so you (and only you) control the packages and files in the repository.
+From a security standpoint, it would be best to fork this project so you (and only you) control the packages and files in the repository.  This also allows you to customize the installer in any way you prefer: 
 
 - Sign into GitHub and fork this project
 - Edit ```xWSL.cmd```.  On line 2 you will see ```SET GITORG=DesktopECHO``` - Change ```DesktopECHO``` to the name of your own repository.
