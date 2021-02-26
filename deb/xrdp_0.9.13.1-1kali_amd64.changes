@@ -1,0 +1,28 @@
+Format: 1.8
+Date: Thu, 25 Feb 2021 10:38:18 -0400
+Source: xrdp
+Binary: xrdp xrdp-dbgsym
+Architecture: amd64
+Version: 0.9.13.1-1kali
+Distribution: rolling
+Urgency: medium
+Maintainer: Debian Remote Maintainers <debian-remote@lists.debian.org>
+Changed-By: Zero <zero@441.surf>
+Description:
+ xrdp       - Remote Desktop Protocol (RDP) server
+Changes:
+ xrdp (0.9.13.1-1kali) rolling; urgency=medium
+ .
+   * Rebuild for Kali
+Checksums-Sha1:
+ 6f30ce28cfe50e550a0857b8465366897f807b8b 872508 xrdp-dbgsym_0.9.13.1-1kali_amd64.deb
+ 72627584de70fb9dcb7fe9c7d68bd8bc50789c7d 6835 xrdp_0.9.13.1-1kali_amd64.buildinfo
+ 711101c5c355acf8dd29fe9064ae6a645edf6b0e 458112 xrdp_0.9.13.1-1kali_amd64.deb
+Checksums-Sha256:
+ 5ee6a5685f8e98ab42adfd733502a3bf2d271959928a1c56644f0a07435aabf6 872508 xrdp-dbgsym_0.9.13.1-1kali_amd64.deb
+ c1e0a00c0d101c93343e7ae00d5f38bb12c181a7ff18e43b2c59c9eb98168f51 6835 xrdp_0.9.13.1-1kali_amd64.buildinfo
+ 8bf1d20cb9c978a9d54bd218daad0ce98072e9ecc2d02ea9538922cca32a80d6 458112 xrdp_0.9.13.1-1kali_amd64.deb
+Files:
+ 0d30951e61a36021660ca0230b214a68 872508 debug optional xrdp-dbgsym_0.9.13.1-1kali_amd64.deb
+ fe014b4cbb538e3b64a5a3541bab8bcd 6835 net optional xrdp_0.9.13.1-1kali_amd64.buildinfo
+ d027c3a3112afe120abbc3221b9cd4ec 458112 net optional xrdp_0.9.13.1-1kali_amd64.deb
