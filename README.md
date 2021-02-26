@@ -82,16 +82,17 @@ If your computer has virtualization support you can convert the instance to WSL2
 From a security standpoint, it would be best to fork this project so you (and only you) control the packages and files in the repository.  This also allows you to customize the installer in any way you prefer: 
 
 - Sign into GitHub and fork this project
-- Edit ```xWSL.cmd```.  On line 2 you will see ```SET GITORG=DesktopECHO``` - Change ```DesktopECHO``` to the name of your own repository.
+- Edit ```Kali-xRDP.cmd```.  On line 2 you will see ```SET GITORG=DesktopECHO``` - Change ```DesktopECHO``` to the name of your own repository.
 - Customize the script any way you like.
 - Launch the script using your repository name:
- ```PowerShell -executionpolicy bypass -command "wget https://github.com/YOUR-REPO-NAME/xWSL/raw/master/xWSL.cmd -UseBasicParsing -OutFile xWSL.cmd ; .\xWSL.cmd"```
+ ```PowerShell -executionpolicy bypass -command "wget https://github.com/YOUR-ORG/Kali-xRDP/raw/main/Kali-xRDP.cmd -UseBasicParsing -OutFile Kali-xRDP.cmd ; .\Kali-xRDP.cmd"```
 
-**Quirks / Limitations / Additional Info:**
+**Additional Info:**
 
-* When you log out out of a desktop session the entire xWSL instance is restarted, the equivilent of a clean-boot at every login.  Disconnected sessions will wait for your return.  
-* WSL1 Doesn't work with PolicyKit. Enabled gksu for apps needing elevated rights (Synaptic, root console)
-* [Apt-fast](https://github.com/ilikenwf/apt-fast) added to improve download speed and reliability.
-* Mozilla Seamonkey included as a stable browser that's kept up to date via apt.  Current versions of Chrome / Firefox do not work in WSL1.
-* Installed image consumes approximately 10GB of storage
-* XFCE uses Windows fonts (Segoe UI / Cascadia Code)
+* When you log out out of a desktop session the entire WSL instance is restarted, the equivilent of a clean-boot at every login. 
+* Disconnected sessions (instead of a logout) work well, when you re-login you can pick up where you left off.
+* Enabled gksu for apps needing elevated rights (Synaptic, root console) to work around limitations in WSL1.
+* [apt-fast](https://github.com/ilikenwf/apt-fast) added to improve download speed and reliability.
+* Mozilla Seamonkey included as a stable browser that's kept up to date via apt.  Current versions of Chrome/Firefox do not work in WSL1.
+* Installed base image consumes approximately 3GB of storage
+* Minor visual tweaks were made, and fonts in XFCE4 are supplied by the host OS (Segoe UI / Cascadia Code)
