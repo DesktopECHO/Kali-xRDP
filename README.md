@@ -2,7 +2,7 @@
 
 Kali-xRDP is a fully-automated script to install xRDP on Kali Linux from the Windows Store.  It works under WSL1 or WSL2, is able to switch between either without issue, and includes optimizations and visual tweaks to provide a smooth and responsive desktop experience.  
 
-Other Kali GUI-installers are designed to work with WSL2 only.  Kali-xRDP works in WSL1 on Windows 10 version 1809 and newer, Windows Server 2019, Server Core, or Hyper-V Server 2019.  This can be useful when you're on older hardware without VT-d, or in a virtual machine without nested virtualization support.  Note that WSL1 has limitations in its networking stack that prevent some of Kali's included tools from working as they should.  
+Other Kali GUI-installers are designed to work with WSL2 only and target newer versions of Windows.  Kali-xRDP works in WSL1 on Windows 10 version 1809, Windows Server 2019, Server Core, or Hyper-V Server 2019.  Running Kali in WSL1 can also be useful when you're on older hardware without VT-d, or in a virtual machine without nested virtualization support.  Note that WSL1 has limitations in its networking stack that prevent some of Kali's included tools from working as they should.  
 
 The install script is meant to be run on a new Kali installation from the Microsoft Store.  If Kali is not detected on your system it will download the .AppX image from Microsoft and install it for you. 
 
@@ -20,7 +20,7 @@ You will be asked a few questions.  The installer script determines the current 
      Port number for SSHd traffic or hit Enter for default [3322]:
      [Not recommended!] Type X to eXclude from Windows Defender:
 
-The script will download the [LxRunOffline](https://github.com/DDoSolitary/LxRunOffline) distro manager to bootstrap the installation.  Install times will vary depending on system performance and presence of antivirus software.  A fast system with broadband kaliInternet can complete the install in under 10 minutes and most machines will complete within 20 minutes. 
+The script will download the [LxRunOffline](https://github.com/DDoSolitary/LxRunOffline) distro manager to bootstrap the installation.  Install times will vary depending on system performance and presence of antivirus software.  A fast system with broadband Internet can complete the install in under 10 minutes and most machines will complete within 20 minutes. 
 
      [22:18:12] Prepare Distro (~1m00s)
      [22:19:08] Install xRDP and Kali-Linux-Core packages (~3m00s)
