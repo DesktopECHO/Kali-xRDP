@@ -132,15 +132,15 @@ ECHO:        End: %RUNEND%
 ECHO: 
 ECHO:  - xRDP Server listening on port %RDPPRT% and SSHd on port %SSHPRT%.
 ECHO: 
-ECHO:  - Link for GUI session has been placed on your desktop.
+ECHO:  - Launcher for RDP session has been placed on your desktop.
 ECHO: 
 ECHO:  - (Re)launch init from the Task Scheduler or by running the following command: 
 ECHO:    schtasks.exe /run /tn %DISTRO%
 ECHO: 
-ECHO: NOTE: This is a minimal installation of Kali Linux, to install all default packages, run:
-ECHO: sudo apt install kali-linux-default  
+ECHO:  NOTE: This is a minimal installation of Kali. To install default packages, run:
+ECHO:        sudo apt install kali-linux-default  
 ECHO: 
-ECHO: Installaion of Kali-xWSL (%DISTRO%) complete, RDP login will start in a few seconds...
+ECHO:Installaion of Kali-xRDP (%DISTRO%) complete, RDP login will start in a few seconds...
 %TEMP%\LxRunOffline.exe set-uid -n "%DISTRO%" -v 1001
 PING -n 6 LOCALHOST > NUL 
 START "Remote Desktop Connection" "MSTSC.EXE" "/V" "Kali-xRDP (%XU%).rdp"
