@@ -1,10 +1,10 @@
 # [Kali-xRDP • xRDP Installer for Kali Linux on WSL1/WSL2 (v1.0 / 20210225)](https://github.com/DesktopECHO/Kali-xRDP)
 
-Kali-xRDP is a fully-automated script to install xRDP on Kali Linux from the Windows Store.  It works under WSL1 or WSL2, is able to switch between either without issue, and includes optimizations and visual tweaks to provide a smooth and responsive desktop experience.  
+Kali-xRDP is a fully-automated script to install xRDP on Kali Linux from the Windows Store.  It works under WSL1 or WSL2 and includes optimizations and visual tweaks for smooth and responsive desktop experience.  
 
-Other Kali GUI-installers are designed to work with WSL2 only and target newer versions of Windows.  Kali-xRDP works in WSL1 on Windows 10 version 1809, Windows Server 2019, Server Core, or Hyper-V Server 2019.  Running Kali in WSL1 can also be useful when you're on older hardware without VT-d, or in a virtual machine without nested virtualization support.  Note that WSL1 has limitations in its networking stack that prevent some of Kali's included tools from working as they should.  
+Other Kali GUI installers are designed to work with WSL2 only, and therefore target newer versions of Windows.  Kali-xRDP works in WSL1 on Windows 10 version 1809, Windows Server 2019, Server Core, or Hyper-V Server 2019.  Running Kali in WSL1 can also be useful on newer versons of Windows when running on older hardware without VT-d, or in a virtual machine without nested virtualization support.  Note that WSL1 has limitations in its networking stack that prevent some of Kali's included tools from working as they should.  
 
-The install script is meant to be run on a new Kali installation from the Microsoft Store.  If Kali is not detected on your system it will download the .AppX image from Microsoft and install it for you. 
+The install script is meant to be run on a new Kali Linux installation from the Microsoft Store.  If Kali is not detected on your system it will download the .AppX image from Microsoft and install it for you. 
 
 **INSTRUCTIONS:  Open a NEW elevated command prompt window (admin rights are required to open firewall ports for RDP and SSH) then type/paste the following command:**
 
@@ -68,7 +68,7 @@ Reboot your PC when complete and the xRDP service in Kali will startup automatic
 
 **Convert to WSL2 instance**
 
-If your computer has virtualization support you can convert the instance to WSL2. 
+If your computer has virtualization support you can convert the instance to WSL2 (and back to WSL1 if needed.) 
 
  - Terminate the instance:
     ````wslconfig /t kali-linux````
@@ -90,9 +90,9 @@ From a security standpoint, it would be best to fork this project so you (and on
 **Additional Info:**
 
 * When you log out out of a desktop session the entire WSL instance is restarted, the equivilent of a clean-boot at every login. 
-* Disconnected sessions (instead of a logout) work well, when you re-login you can pick up where you left off.
+* Disconnecting your session works well, when you re-login you pick up where you left off and your programs are still open.
 * Enabled gksu for apps needing elevated rights (Synaptic, root console) to work around limitations in WSL1.
 * [apt-fast](https://github.com/ilikenwf/apt-fast) added to improve download speed and reliability.
 * Mozilla Seamonkey included as a stable browser that's kept up to date via apt.  Current versions of Chrome/Firefox do not work in WSL1.
 * Installed base image consumes approximately 3GB of storage
-* Minor visual tweaks were made, and fonts in XFCE4 are supplied by the host OS (Segoe UI / Cascadia Code)
+* Minor visual tweaks were made and fonts in XFCE4 are supplied by the host OS (Segoe UI / Cascadia Code)
