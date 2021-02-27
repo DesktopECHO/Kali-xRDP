@@ -8,20 +8,21 @@ SET BASE=https://github.com/%GITORG%/%GITPRJ%/raw/%BRANCH%
 
 REM ## Enable WSL if needed
 PowerShell.exe -Command "$WSL = Get-WindowsOptionalFeature -Online -FeatureName 'Microsoft-Windows-Subsystem-Linux' ; if ($WSL.State -eq 'Disabled') {Enable-WindowsOptionalFeature -FeatureName $WSL.FeatureName -Online}"
+SET RUNSTART=%date% @ %time:~0,5%
 
 REM ## Install Kali from AppStore if needed
-PowerShell.exe -Command "wsl -d kali-linux -e 'uname' > $env:TEMP\DistroTestAlive.TMP ; $alive = Get-Content $env:TEMP\DistroTestAlive.TMP ; IF ($Alive -ne 'Linux') {Start-BitsTransfer https://aka.ms/wsl-kali-linux-new -Destination $env:TEMP\Kali.AppX ; Add-AppxPackage $env:TEMP\Kali.AppX ; Kali.exe install --root ; Kali.exe run 'wget https://http.kali.org/kali/pool/main/k/kali-archive-keyring/kali-archive-keyring_2020.2_all.deb ; dpkg -i kali-archive-keyring_2020.2_all.deb' }" >NUL 2>&1 
-
-CLS && SET RUNSTART=%date% @ %time:~0,5%
-
-REM ## Find system DPI setting and get installation parameters
-IF NOT EXIST "%TEMP%\windpi.ps1" POWERSHELL.EXE -ExecutionPolicy Bypass -Command "wget '%BASE%/windpi.ps1' -UseBasicParsing -OutFile '%TEMP%\windpi.ps1'"
-FOR /f "delims=" %%a in ('powershell -ExecutionPolicy bypass -command "%TEMP%\windpi.ps1" ') do set "WINDPI=%%a"
+PowerShell.exe -Command "wsl -d kali-linux -e 'uname' > $env:TEMP\DistroTestAlive.TMP ; $alive = Get-Content $env:TEMP\DistroTestAlive.TMP ; IF ($Alive -ne 'Linux') { Start-BitsTransfer https://aka.ms/wsl-kali-linux-new -Destination $env:TEMP\Kali.AppX ; Add-AppxPackage $env:TEMP\Kali.AppX ; Kali.exe install --root }"
+START /MIN /WAIT "Keyring Update" "Kali.exe" "run" "wget https://http.kali.org/kali/pool/main/k/kali-archive-keyring/kali-archive-keyring_2020.2_all.deb -O /tmp/kali-archive-keyring_2020.2_all.deb ; dpkg -i /tmp/kali-archive-keyring_2020.2_all.deb"
 
 REM ## Acquire LxRunOffline
 IF NOT EXIST "%TEMP%\LxRunOffline.exe" POWERSHELL.EXE -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 ; wget https://github.com/DDoSolitary/LxRunOffline/releases/download/v3.5.0/LxRunOffline-v3.5.0-msvc.zip -UseBasicParsing -OutFile '%TEMP%\LxRunOffline-v3.5.0-msvc.zip' ; Expand-Archive -Path '%TEMP%\LxRunOffline-v3.5.0-msvc.zip' -DestinationPath '%TEMP%' -Force" > NUL
 MKDIR %TEMP%\Kali-xRDP >NUL 2>&1 
 
+REM ## Find system DPI setting and get installation parameters
+IF NOT EXIST "%TEMP%\windpi.ps1" POWERSHELL.EXE -ExecutionPolicy Bypass -Command "wget '%BASE%/windpi.ps1' -UseBasicParsing -OutFile '%TEMP%\windpi.ps1'"
+FOR /f "delims=" %%a in ('powershell -ExecutionPolicy bypass -command "%TEMP%\windpi.ps1" ') do set "WINDPI=%%a"
+
+CLS
 ECHO [Kali-xRDP Installer 20210225]
 ECHO:
 ECHO Hit Enter to use your current display scaling in Windows
