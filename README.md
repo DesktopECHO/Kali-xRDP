@@ -79,7 +79,7 @@ If your computer has virtualization support you can convert the instance to WSL2
 
 **Make it your own:**
 
-From a security standpoint, it would be best to fork this project so you (and only you) control the packages and files in the repository.  This also allows you to customize the installer in any way you prefer: 
+From a security perspective, you should fork this project so you control the packages and files in the repository.  This also allows you to customize the installer in any way you prefer: 
 
 - Sign into GitHub and fork this project
 - Edit ```Kali-xRDP.cmd```.  On line 2 you will see ```SET GITORG=DesktopECHO``` - Change ```DesktopECHO``` to the name of your own repository.
