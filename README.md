@@ -96,3 +96,6 @@ From a security perspective, you should fork this project so you control the pac
 * Mozilla Seamonkey included as a stable browser that's kept up to date via apt.  Current versions of Chrome/Firefox do not work in WSL1.
 * Installed base image consumes approximately 3GB of storage
 * Minor visual tweaks were made and fonts in XFCE4 are supplied by the host OS (Segoe UI / Cascadia Code)
+
+![image](https://user-images.githubusercontent.com/33142753/109516375-7c036f80-7a7e-11eb-99de-54ae788ebb90.png)
+
