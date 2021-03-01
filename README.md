@@ -63,7 +63,7 @@ Reboot your PC when complete and the xRDP service in Kali will startup automatic
 
 **Start/Stop Operation**
 
-* Restart the instance: ````schtasks /run /tn kali-linux```` 
+* Start (or restart) the instance: ````schtasks /run /tn kali-linux```` 
 * Terminate the instance: ````wslconfig /t kali-linux````
 
 **Convert to WSL2 instance**
