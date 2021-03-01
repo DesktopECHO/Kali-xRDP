@@ -1,4 +1,4 @@
-# [Kali-xRDP • GUI add-on for Kali Linux on WSL1 and WSL2 (v1.0 / 20210225)](https://github.com/DesktopECHO/Kali-xRDP)
+# [Kali-xRDP • GUI add-on for Kali Linux in WSL1 or 2 (v1.0 / 20210225)](https://github.com/DesktopECHO/Kali-xRDP)
 
 Kali-xRDP is a fully-automated script to install xRDP on Kali Linux from the Windows Store.  It works under WSL1 or WSL2 and includes optimizations and visual tweaks for a smooth and responsive desktop experience.  
 
