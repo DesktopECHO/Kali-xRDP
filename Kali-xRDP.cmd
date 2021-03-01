@@ -23,7 +23,7 @@ IF NOT EXIST "%TEMP%\windpi.ps1" POWERSHELL.EXE -ExecutionPolicy Bypass -Command
 FOR /f "delims=" %%a in ('powershell -ExecutionPolicy bypass -command "%TEMP%\windpi.ps1" ') do set "WINDPI=%%a"
 
 CLS
-ECHO [Kali-xRDP Installer 20210226]
+ECHO [Kali-xRDP Installer 20210227]
 ECHO:
 ECHO Hit Enter to use your current display scaling in Windows
 SET /p WINDPI=or set the desired value (1.0 to 3.0 in .25 increments) [%WINDPI%]: 
@@ -142,7 +142,7 @@ ECHO:
 ECHO:  NOTE: This is a minimal installation of Kali. To install default packages, run:
 ECHO:        sudo apt install kali-linux-default  
 ECHO: 
-ECHO:Installaion of Kali-xRDP (%DISTRO%) complete, RDP login will start in a few seconds...
+ECHO:Installation of Kali-xRDP (%DISTRO%) complete, RDP login will start in a few seconds...
 %TEMP%\LxRunOffline.exe set-uid -n "%DISTRO%" -v 1001
 PING -n 6 LOCALHOST > NUL 
 START "Remote Desktop Connection" "MSTSC.EXE" "/V" "Kali-xRDP (%XU%).rdp"
