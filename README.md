@@ -74,7 +74,7 @@ If your computer has virtualization support you can convert the instance to WSL2
     ````wslconfig /t kali-linux````
  - Convert the instance to WSL2:
     ````wsl --set-version kali-linux 2````
- - Restart kWSL Instance:
+ - Restart the Instance:
     ````schtasks /run /tn kali-linux````
 
 **Make it your own:**
