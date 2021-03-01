@@ -2,7 +2,7 @@
 
 Kali-xRDP is a fully-automated script that installs xRDP ontop of Kali Linux from the Windows Store.  It works under WSL1 or WSL2 and includes optimizations and visual tweaks for a smooth and responsive desktop experience.  Display scaling is configured automatically and works on everything from standard unscaled displays all the way to xHiDPI (250%+) displays like the Microsoft Surface.
 
-Other Kali GUI installers are designed to work with WSL2 only, and therefore target newer versions of Windows.  Kali-xRDP works with Windows 10 version 1809, Windows Server 2019, Server Core, or Hyper-V Server 2019.  Running Kali in WSL1 can also be helpful for newer versons of Windows running on older hardware without VT-d, or in a virtual machine without nested virtualization support.  Note that WSL1 has limitations in its networking stack that prevent some of Kali's included tools from working as they should, so you should run Kali in WSL2 unless you're prevented from doing so for the reasons listed above.       
+Other Kali GUI installers are designed to work with WSL2 only, and therefore target newer versions of Windows.  Kali-xRDP works with Windows 10 version 1809, Windows Server 2019, Server Core, or Hyper-V Server 2019.  Running Kali in WSL1 can also be helpful for newer versions of Windows running on older hardware without VT-d, or in a virtual machine without nested virtualization support.  Note that WSL1 has limitations in its networking stack that prevent some of Kali's included tools from working as they should, so you should run Kali in WSL2 unless you're prevented from doing so for the reasons listed above.       
 
 The install script is meant to be run on a new Kali Linux installation from the Microsoft Store.  If Kali is not installed on your system it will download the .AppX image directly from Microsoft and install it for you. 
 
@@ -89,8 +89,8 @@ From a security perspective, you should fork this project so you control the pac
 
 **Additional Info:**
 
-* When you log out out of a desktop session the entire WSL instance is restarted, the equivilent of a clean-boot at every login. 
-* Disconnecting your session works well, when you re-login you pick up where you left off and your programs are still open.
+* When you log out out of a desktop session the entire WSL instance is restarted, equivalent to a clean-boot at every login. 
+* Disconnected sessions continue to run in the background and resuming the session works reliably.
 * Enabled gksu for apps needing elevated rights (Synaptic, root console) to work around limitations in WSL1.
 * [apt-fast](https://github.com/ilikenwf/apt-fast) added to improve download speed and reliability.
 * Mozilla Seamonkey included as a stable browser that's kept up to date via apt.  Current versions of Chrome/Firefox do not work in WSL1.
