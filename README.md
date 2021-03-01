@@ -1,6 +1,6 @@
-# [Kali-xRDP • GUI add-on for Kali Linux in WSL1 or 2 (v1.0 / 20210225)](https://github.com/DesktopECHO/Kali-xRDP)
+# [Kali-xRDP • GUI add-on for Kali Linux in WSL1 or 2 (v1.0 / 20210227)](https://github.com/DesktopECHO/Kali-xRDP)
 
-Kali-xRDP is a fully-automated script that installs xRDP ontop of Kali Linux from the Windows Store.  It works under WSL1 or WSL2 and includes optimizations and visual tweaks for a smooth and responsive desktop experience.  Display scaling is configured automatically and works on everything from standard unscaled displays all the way to xHiDPI (250%+) displays like the Microsoft Surface.
+Kali-xRDP is a fully-automated script that installs xRDP on-top of Kali Linux from the Windows Store.  It works under WSL1 or WSL2 and includes optimizations and visual tweaks for a smooth and responsive desktop experience.  Display scaling is configured automatically and works on everything from standard unscaled displays all the way to xHiDPI (250%+) displays like the Microsoft Surface.
 
 Other Kali GUI installers are designed to work with WSL2 only, and therefore target newer versions of Windows.  Kali-xRDP works with Windows 10 version 1809, Windows Server 2019, Server Core, or Hyper-V Server 2019.  Running Kali in WSL1 can also be helpful for newer versions of Windows running on older hardware without VT-d, or in a virtual machine without nested virtualization support.  Note that WSL1 has limitations in its networking stack that prevent some of Kali's included tools from working as they should, so you should run Kali in WSL2 unless you're prevented from doing so for the reasons listed above.       
 
@@ -74,7 +74,7 @@ If your computer has virtualization support you can convert the instance to WSL2
     ````wslconfig /t kali-linux````
  - Convert the instance to WSL2:
     ````wsl --set-version kali-linux 2````
- - Restart kWSL Instance:
+ - Restart the Instance:
     ````schtasks /run /tn kali-linux````
 
 **Make it your own:**
