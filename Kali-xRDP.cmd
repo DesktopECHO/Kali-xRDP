@@ -13,6 +13,7 @@ SET RUNSTART=%date% @ %time:~0,5%
 REM ## Install Kali from AppStore if needed
 PowerShell.exe -Command "wsl -d kali-linux -e 'uname' > $env:TEMP\DistroTestAlive.TMP ; $alive = Get-Content $env:TEMP\DistroTestAlive.TMP ; IF ($Alive -ne 'Linux') { Start-BitsTransfer https://aka.ms/wsl-kali-linux-new -Destination $env:TEMP\Kali.AppX ; Add-AppxPackage $env:TEMP\Kali.AppX ; Kali.exe install --root }"
 START /MIN /WAIT "Keyring Update" "Kali.exe" "run" "wget https://http.kali.org/kali/pool/main/k/kali-archive-keyring/kali-archive-keyring_2020.2_all.deb -O /tmp/kali-archive-keyring_2020.2_all.deb ; dpkg -i /tmp/kali-archive-keyring_2020.2_all.deb"
+WSLCONFIG /t kali-linux & PING LOCALHOST -n 3 >NUL 
 
 REM ## Acquire LxRunOffline
 IF NOT EXIST "%TEMP%\LxRunOffline.exe" POWERSHELL.EXE -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 ; wget https://github.com/DDoSolitary/LxRunOffline/releases/download/v3.5.0/LxRunOffline-v3.5.0-msvc.zip -UseBasicParsing -OutFile '%TEMP%\LxRunOffline-v3.5.0-msvc.zip' ; Expand-Archive -Path '%TEMP%\LxRunOffline-v3.5.0-msvc.zip' -DestinationPath '%TEMP%' -Force" > NUL
@@ -23,12 +24,12 @@ IF NOT EXIST "%TEMP%\windpi.ps1" POWERSHELL.EXE -ExecutionPolicy Bypass -Command
 FOR /f "delims=" %%a in ('powershell -ExecutionPolicy bypass -command "%TEMP%\windpi.ps1" ') do set "WINDPI=%%a"
 
 CLS
-ECHO [Kali-xRDP Installer 20210227]
+ECHO [Kali-xRDP Installer 20210602]
 ECHO:
 ECHO Hit Enter to use your current display scaling in Windows
 SET /p WINDPI=or set the desired value (1.0 to 3.0 in .25 increments) [%WINDPI%]: 
 SET RDPPRT=3399& SET /p RDPPRT=Port number for xRDP traffic or hit Enter for default [3399]: 
-SET SSHPRT=3322& SET /p SSHPRT=Port number for SSHd traffic or hit Enter for default [3322]:
+SET SSHPRT=3322& SET /p SSHPRT=Port number for SSHd traffic or hit Enter for default [3322]: 
 FOR /f "delims=" %%a in ('PowerShell -Command 96 * "%WINDPI%" ') do set "LINDPI=%%a"
 FOR /f "delims=" %%a in ('PowerShell -Command 32 * "%WINDPI%" ') do set "PANEL=%%a"
 FOR /f "delims=" %%a in ('PowerShell -Command 48 * "%WINDPI%" ') do set "ICONS=%%a"
@@ -53,13 +54,13 @@ FOR /F %%A in ("apterr") do If %%~zA NEQ 0 GOTO APTRELY
 
 ECHO:
 ECHO [%TIME:~0,8%] Prepare Distro (~1m00s)
-%GO% "DEBIAN_FRONTEND=noninteractive apt-get -y install git gnupg2 libc-ares2 libssh2-1 libaria2-0 aria2 --no-install-recommends ; cd /tmp ; git clone -b %BRANCH% --depth=1 https://github.com/%GITORG%/%GITPRJ%.git ; chmod +x /tmp/Kali-xRDP/dist/usr/local/bin/apt-fast ; cp -p /tmp/Kali-xRDP/dist/usr/local/bin/apt-fast /usr/local/bin" > "%TEMP%\Kali-xRDP\%TIME:~0,2%%TIME:~3,2%%TIME:~6,2% Prepare Distro.log" 2>&1
+%GO% "DEBIAN_FRONTEND=noninteractive apt-get -y install git gnupg2 libc-ares2 libssh2-1 libaria2-0 aria2 --no-install-recommends ; cd /tmp ; rm -rf %GITPRJ% ; git clone -b %BRANCH% --depth=1 https://github.com/%GITORG%/%GITPRJ%.git ; chmod +x /tmp/Kali-xRDP/dist/usr/local/bin/apt-fast ; cp -p /tmp/Kali-xRDP/dist/usr/local/bin/apt-fast /usr/local/bin" > "%TEMP%\Kali-xRDP\%TIME:~0,2%%TIME:~3,2%%TIME:~6,2% Prepare Distro.log" 2>&1
  
 ECHO [%TIME:~0,8%] Install xRDP and 'kali-linux-core' metapackage (~3m00s)
 %GO% "DEBIAN_FRONTEND=noninteractive apt-fast -y install /tmp/Kali-xRDP/deb/xrdp_0.9.13.1-1kali_amd64.deb /tmp/Kali-xRDP/deb/gksu_2.1.0_amd64.deb /tmp/Kali-xRDP/deb/libgksu2-0_2.1.0_amd64.deb /tmp/Kali-xRDP/deb/libgnome-keyring0_3.12.0-1+b2_amd64.deb /tmp/Kali-xRDP/deb/libgnome-keyring-common_3.12.0-1_all.deb /tmp/Kali-xRDP/deb/multiarch-support_2.27-3ubuntu1_amd64.deb /tmp/Kali-xRDP/deb/wslu_3.2.1-0kali1_amd64.deb sysv-rc fonts-cascadia-code compton-conf picom libxcb-damage0 xorgxrdp x11-apps x11-session-utils x11-xserver-utils dialog distro-info-data dumb-init inetutils-syslogd xdg-utils avahi-daemon libnss-mdns binutils putty unzip zip unar unzip dbus-x11 samba-common-bin lhasa arj unace liblhasa0 apt-config-icons apt-config-icons-hidpi apt-config-icons-large apt-config-icons-large-hidpi libgtkd-3-0 libvte-2.91-0 libvte-2.91-common libvted-3-0 tilix tilix-common libdbus-glib-1-2 xvfb xbase-clients python3-psutil kali-linux-core synaptic --no-install-recommends"  > "%TEMP%\Kali-xRDP\%TIME:~0,2%%TIME:~3,2%%TIME:~6,2% Install xRDP and 'kali-linux-core' metapackage.log" 2>&1
 
 ECHO [%TIME:~0,8%] Install Seamonkey and 'kali-desktop-xfce' metapackage (~5m00s)
-%GO% "DEBIAN_FRONTEND=noninteractive apt-fast -y install kali-desktop-xfce ; apt -y purge pcscd blueman bluez pulseaudio-module-bluetooth firefox-esr gir1.2-ayatanaappindicator3-0.1 gir1.2-nm-1.0 libccid libsbc1 xfce4-power-manager --autoremove" > "%TEMP%\Kali-xRDP\%TIME:~0,2%%TIME:~3,2%%TIME:~6,2% Install Seamonkey and 'kali-desktop-xfce' metapackage.log" 2>&1
+%GO% "DEBIAN_FRONTEND=noninteractive apt-fast -y install kali-desktop-xfce kazam ; apt-get  -y install /tmp/Kali-xRDP/webkit2gtk/*.deb epiphany-browser ; apt -y purge pcscd blueman bluez pulseaudio-module-bluetooth firefox-esr gir1.2-ayatanaappindicator3-0.1 gir1.2-nm-1.0 libccid libsbc1 xfce4-power-manager --autoremove" > "%TEMP%\Kali-xRDP\%TIME:~0,2%%TIME:~3,2%%TIME:~6,2% Install Seamonkey and 'kali-desktop-xfce' metapackage.log" 2>&1
 
 REM ## Additional items to install can go here...
 ECHO [%TIME:~0,8%] Additional Components (~1m00s)
@@ -97,7 +98,7 @@ CD %DISTROFULL%
 ECHO:
 SET /p XU=Create a NEW user in Kali for xRDP GUI login. Enter username: 
 POWERSHELL -Command $prd = read-host "Enter password for %XU%" -AsSecureString ; $BSTR=[System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($prd) ; [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR) > .tmp & set /p PWO=<.tmp
-%GO% "useradd -m -p nulltemp -s /bin/bash -u 1001 %XU%"
+%GO% "useradd -m -p nulltemp -s /bin/bash %XU%"
 %GO% "(echo '%XU%:%PWO%') | chpasswd"
 %GO% "echo '%XU% ALL=(ALL:ALL) ALL' >> /etc/sudoers"
 %GO% "sed -i 's/PLACEHOLDER/%XU%/g' /tmp/Kali-xRDP/xWSL.rdp"
@@ -132,15 +133,18 @@ ECHO:      Start: %RUNSTART%
 ECHO:        End: %RUNEND%
 %GO%  "echo -ne '   Packages:'\   ; dpkg-query -l | grep "^ii" | wc -l "
 ECHO: 
-ECHO:  - xRDP Server listening on port %RDPPRT% and SSHd on port %SSHPRT%.
+ECHO:     * xRDP Server listening on port %RDPPRT% and SSHd on port %SSHPRT%.
 ECHO: 
-ECHO:  - Launcher for RDP session has been placed on your desktop.
+ECHO:     * Connection file for xRDP session has been placed on your desktop.
 ECHO: 
-ECHO:  - (Re)launch init from the Task Scheduler or by running the following command: 
-ECHO:    schtasks.exe /run /tn %DISTRO%
+ECHO:     * Launch or Relaunch xRDP from Task Scheduler with the following command: 
+ECHO:       schtasks.exe /run /tn %DISTRO%
+ECHO:
+ECHO:     * Kill xRDP with the following command:
+ECHO        wslconfig.exe /t %DISTRO% 
 ECHO: 
-ECHO:  NOTE: This is a minimal installation of Kali. To install default packages, run:
-ECHO:        sudo apt install kali-linux-default  
+ECHO:     * This is a minimal installation of Kali. To install default packages:
+ECHO:       sudo apt install kali-linux-default  
 ECHO: 
 ECHO:Installation of Kali-xRDP (%DISTRO%) complete, RDP login will start in a few seconds...
 %TEMP%\LxRunOffline.exe set-uid -n "%DISTRO%" -v 1001
