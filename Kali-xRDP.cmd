@@ -133,18 +133,18 @@ ECHO:      Start: %RUNSTART%
 ECHO:        End: %RUNEND%
 %GO%  "echo -ne '   Packages:'\   ; dpkg-query -l | grep "^ii" | wc -l "
 ECHO: 
-ECHO:  - xRDP Server listening on port %RDPPRT% and SSHd on port %SSHPRT%.
+ECHO:     * xRDP Server listening on port %RDPPRT% and SSHd on port %SSHPRT%.
 ECHO: 
-ECHO:  - Launcher for RDP session has been placed on your desktop.
+ECHO:     * Connection file for xRDP session has been placed on your desktop.
 ECHO: 
-ECHO:  - (Re)launch init from the Task Scheduler with the following command: 
-ECHO:    schtasks.exe /run /tn %DISTRO%
+ECHO:     * Launch or Relaunch xRDP from Task Scheduler with the following command: 
+ECHO:       schtasks.exe /run /tn %DISTRO%
 ECHO:
-ECHO:  - Kill xRDP with the following command:
-ECHO     wslconfig.exe /t %DISTRO% 
+ECHO:     * Kill xRDP with the following command:
+ECHO        wslconfig.exe /t %DISTRO% 
 ECHO: 
-ECHO:  NOTE: This is a minimal installation of Kali. To install default packages, run:
-ECHO:        sudo apt install kali-linux-default  
+ECHO:     * This is a minimal installation of Kali. To install default packages:
+ECHO:       sudo apt install kali-linux-default  
 ECHO: 
 ECHO:Installation of Kali-xRDP (%DISTRO%) complete, RDP login will start in a few seconds...
 %TEMP%\LxRunOffline.exe set-uid -n "%DISTRO%" -v 1001
