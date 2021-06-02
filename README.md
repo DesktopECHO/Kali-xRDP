@@ -1,4 +1,5 @@
-# [Kali-xRDP • GUI add-on for Kali Linux in WSL1 or 2 (v1.0 / 20210227)](https://github.com/DesktopECHO/Kali-xRDP)
+# [Kali-xRDP • GUI add-on for Kali Linux in WSL (Version 1 or 2) • v1.1/20210602](https://github.com/DesktopECHO/Kali-xRDP)
+Other distributions are available - See **KDE Neon** [**(kWSL)**](https://github.com/DesktopECHO/kWSL) and **Ubuntu 20.04** [**(xWSL)**](https://github.com/DesktopECHO/xWSL) for details.
 
 Kali-xRDP is a fully-automated script that installs xRDP on-top of Kali Linux from the Windows Store.  It works under WSL1 or WSL2 and includes optimizations and visual tweaks for a smooth and responsive desktop experience.  Display scaling is configured automatically and works on everything from standard unscaled displays all the way to xHiDPI (250%+) displays like the Microsoft Surface.
 
@@ -12,7 +13,7 @@ The install script is meant to be run on a new Kali Linux installation from the 
     
 You will be asked a few questions.  The installer script determines the current Windows DPI scaling of your system but you may set your own if preferred:
 
-     [Kali xRDP Installer 20210225]
+     [Kali xRDP Installer 20210602]
 
      Hit Enter to use your current display scaling in Windows
      or set the desired value (1.0 to 3.0 in .25 increments) [1.5]: 1.25
@@ -89,6 +90,7 @@ From a security perspective, you should fork this project so you control the pac
 
 **Additional Info:**
 
+* Rebuilt [WebKitGTK](https://webkit.org/) 2.32 for WSL
 * When you log out out of a desktop session the entire WSL instance is restarted, equivalent to a clean-boot at every login. 
 * Disconnected sessions continue to run in the background and resuming the session works reliably.
 * Enabled gksu for apps needing elevated rights (Synaptic, root console) to work around limitations in WSL1.
