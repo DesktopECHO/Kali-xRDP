@@ -1,7 +1,9 @@
-# [Kali-xRDP • GUI add-on for Kali Linux in WSL (Version 1 or 2) • v1.1/20210602](https://github.com/DesktopECHO/Kali-xRDP)
-Other distributions are available - See **KDE Neon** [**(kWSL)**](https://github.com/DesktopECHO/kWSL) and **Ubuntu 20.04** [**(xWSL)**](https://github.com/DesktopECHO/xWSL) for details.
+# [Kali-xRDP • GUI for Kali Linux on WSL (Version 1 or 2) • v1.1/20210602](https://github.com/DesktopECHO/Kali-xRDP)
+*Other distributions available:* **KDE Neon** [**(kWSL)**](https://github.com/DesktopECHO/kWSL) and **Ubuntu 20.04** [**(xWSL)**](https://github.com/DesktopECHO/xWSL) 
 
-Kali-xRDP is a fully-automated script that installs xRDP on-top of Kali Linux from the Windows Store.  It works under WSL1 or WSL2 and includes optimizations and visual tweaks for a smooth and responsive desktop experience.  Display scaling is configured automatically and works on everything from standard unscaled displays all the way to xHiDPI (250%+) displays like the Microsoft Surface.
+Kali-xRDP is a script that installs xRDP on-top of Kali Linux from the Windows Store.  It works under WSL1 or WSL2 and includes optimizations and visual tweaks for a smooth and responsive desktop experience.  Display scaling is configured automatically and works on everything from standard unscaled displays all the way to xHiDPI (250%+) displays like the Microsoft Surface.
+
+![image](https://user-images.githubusercontent.com/33142753/109516375-7c036f80-7a7e-11eb-99de-54ae788ebb90.png)
 
 Other Kali GUI installers are designed to work with WSL2 only, and therefore target newer versions of Windows.  Kali-xRDP works with Windows 10 version 1809, Windows Server 2019, Server Core, or Hyper-V Server 2019.  Running Kali in WSL1 can also be helpful for newer versions of Windows running on older hardware without VT-d, or in a virtual machine without nested virtualization support.  Note that WSL1 has limitations in its networking stack that prevent some of Kali's included tools from working as they should, so you should run Kali in WSL2 unless you're prevented from doing so for the reasons listed above.       
 
@@ -100,6 +102,4 @@ From a security perspective, you should fork this project so you control the pac
 * Minor visual tweaks were made and fonts in XFCE4 are supplied by the host OS (Segoe UI / Cascadia Code)
 
 ![image](https://user-images.githubusercontent.com/33142753/109518093-55463880-7a80-11eb-9276-e27ffd08fcc9.png)
-
-![image](https://user-images.githubusercontent.com/33142753/109516375-7c036f80-7a7e-11eb-99de-54ae788ebb90.png)
 
