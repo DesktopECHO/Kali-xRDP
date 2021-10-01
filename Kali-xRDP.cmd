@@ -43,7 +43,7 @@ IF %DEFEXL%==X (POWERSHELL.EXE -Command "wget %BASE%/excludeWSL.ps1 -UseBasicPar
 
 REM ## Workaround potential DNS issue in WSL and update Keyring
 %GO% "rm -rf /etc/resolv.conf ; echo 'nameserver 1.1.1.1' > /etc/resolv.conf ; echo 'nameserver 8.8.8.8' >> /etc/resolv.conf ; chattr +i /etc/resolv.conf" >NUL 2>&1 
-%GO% "wget -q https://http.kali.org/kali/pool/main/k/kali-archive-keyring/kali-archive-keyring_2020.2_all.deb -O /tmp/kali-archive-keyring_2020.2_all.deb ; dpkg -i /tmp/kali-archive-keyring_2020.2_all.deb" > NUL
+%GO% "wget -q http://http.kali.org/kali/pool/main/k/kali-archive-keyring/kali-archive-keyring_2020.2_all.deb -O /tmp/kali-archive-keyring_2020.2_all.deb ; dpkg -i /tmp/kali-archive-keyring_2020.2_all.deb" > NUL
 
 REM ## Loop until we get a successful repo update
 :APTRELY
