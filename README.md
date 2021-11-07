@@ -1,4 +1,4 @@
-# [Kali-xRDP • xRDP GUI for WSL1 & WSL2 • v1.1/20210602](https://github.com/DesktopECHO/Kali-xRDP)
+# [Kali-xRDP • xRDP GUI for WSL1 & WSL2 • v20211105](https://github.com/DesktopECHO/Kali-xRDP)
 *Other distributions available:* **KDE Neon** [**(kWSL)**](https://github.com/DesktopECHO/kWSL) and **Ubuntu 20.04** [**(xWSL)**](https://github.com/DesktopECHO/xWSL) 
 
 Kali-xRDP is a script that installs xRDP and XFCE 4.16 on top of Kali Linux from the Windows Store. [Win-KeX](https://www.kali.org/docs/wsl/win-kex) is the better-known method for running a GUI in WSL, but only works with Windows 10 1903+ on WSL2, whereas this project was created to work well in WSL1 or WSL2.  It includes optimizations and visual tweaks for a smooth and responsive desktop experience.  Display scaling is configured automatically and works on everything from standard unscaled displays all the way to xHiDPI (250%+) displays such as the Microsoft Surface.
