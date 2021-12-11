@@ -22,7 +22,7 @@ IF NOT EXIST "%TEMP%\windpi.ps1" POWERSHELL.EXE -ExecutionPolicy Bypass -Command
 FOR /f "delims=" %%a in ('powershell -ExecutionPolicy bypass -command "%TEMP%\windpi.ps1" ') do set "WINDPI=%%a"
 
 CLS
-ECHO [Kali-xRDP Installer 20211105]
+ECHO [Kali-xRDP Installer 20211211]
 ECHO:
 ECHO Hit Enter to use your current display scaling in Windows
 SET /p WINDPI=or set the desired value (1.0 to 3.0 in .25 increments) [%WINDPI%]: 

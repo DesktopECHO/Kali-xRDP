@@ -50,7 +50,7 @@
     <property name="icon-size" type="uint" value="III"/>
     <property name="tooltip-size" type="empty"/>
     <property name="use-custom-font-size" type="bool" value="true"/>
-    <property name="font-size" type="double" value="11.000000"/>
+    <property name="font-size" type="double" value="9.000000"/>
   </property>
   <property name="last" type="empty">
     <property name="window-width" type="int" value="640"/>
