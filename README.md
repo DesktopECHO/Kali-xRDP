@@ -1,7 +1,7 @@
-# [Kali-xRDP • xRDP GUI for WSL1 & WSL2 • v20211105](https://github.com/DesktopECHO/Kali-xRDP)
-*Other distributions available:* **KDE Neon** [**(kWSL)**](https://github.com/DesktopECHO/kWSL) and **Ubuntu 20.04** [**(xWSL)**](https://github.com/DesktopECHO/xWSL) 
+# [Kali-xRDP • xRDP GUI for WSL1 & WSL2 • v20240311](https://github.com/DesktopECHO/Kali-xRDP)
+*Other distribution available:* **Ubuntu 22.04** [**(xWSL)**](https://github.com/DesktopECHO/xWSL) 
 
-Kali-xRDP is a script that installs xRDP and XFCE 4.16 on top of Kali Linux from the Windows Store. [Win-KeX](https://www.kali.org/docs/wsl/win-kex) is the better-known method for running a GUI in WSL, but only works with Windows 10 1903+ on WSL2, whereas this project was created to work well in WSL1 or WSL2.  It includes optimizations and visual tweaks for a smooth and responsive desktop experience.  Display scaling is configured automatically and works on everything from standard unscaled displays all the way to xHiDPI (250%+) displays such as the Microsoft Surface.
+Kali-xRDP is a script that installs xRDP and XFCE on top of Kali Linux from the Windows Store. [Win-KeX](https://www.kali.org/docs/wsl/win-kex) is the better-known method for running a GUI in WSL, but only works with Windows 10 1903+ on WSL2, whereas this project was created to work well in WSL1 or WSL2.  It includes optimizations and visual tweaks for a smooth and responsive desktop experience.  Display scaling is configured automatically and works on everything from standard unscaled displays all the way to xHiDPI (250%+) displays such as the Microsoft Surface.
 
 ![ScreenShot](https://user-images.githubusercontent.com/33142753/131357068-13439d68-55b0-4009-b506-947b58fab5b1.png)
 
@@ -25,11 +25,11 @@ You will be asked a few questions.  The installer script determines the current 
 
 The script will download the [LxRunOffline](https://github.com/DDoSolitary/LxRunOffline) distro manager to bootstrap the installation.  Install times will vary depending on system performance and the presence of antivirus software.  A fast system with broadband Internet can complete the install in under 10 minutes and most machines will complete within 20 minutes.  Expect it to take 30+ minutes if Windows Defender is running.  If you want to track progress logs are located in %TEMP%\Kali-xRDP. 
 
-     [22:18:12] Prepare Distro (~1m00s)
-     [22:19:08] Install xRDP and Kali-Linux-Core packages (~3m00s)
-     [22:22:53] Kali-Desktop-XFCE (~5m00s)
-     [22:30:39] Additional Components (~1m00s)
-   
+    [10:59:03] Prepare Distro                          (ETA: 1m30s)
+    [10:59:46] 'kali-linux-core' metapackage and xRDP  (ETA: 3m30s)
+    [11:03:13] Kali Xfce desktop environment           (ETA: 3m00s)
+    [11:05:55] Extras [Seamonkey, Zenmap, CRD]         (ETA: 1m30s)
+
 At the end of the script you will be prompted to create a non-root user which will automatically be added to sudo'ers.
 
      Create a NEW user in Kali for xRDP GUI login. Enter username: kaliuser
@@ -92,7 +92,6 @@ From a security perspective, you should fork this project so you control the pac
 
 **Additional Info:**
 
-* Rebuilt [WebKitGTK](https://webkit.org/) 2.32 for WSL
 * When you log out out of a desktop session the entire WSL instance is restarted, equivalent to a clean-boot at every login. 
 * Disconnected sessions continue to run in the background and resuming your session works reliably.
 * Enabled gksu for apps needing elevated rights (Synaptic, root console) to work around limitations in WSL1.

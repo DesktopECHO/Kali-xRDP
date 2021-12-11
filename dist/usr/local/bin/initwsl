@@ -1,13 +1,26 @@
 #!/bin/bash
 run_level=$1
+export RUNLEVEL=$run_level
 touch /run/initctl >/dev/null 2>&1
 chmod 644 /var/run/syslog.pid >/dev/null 2>&1
 strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5 >/dev/null 2>&1
 chmod a-x /usr/lib/x86_64-linux-gnu/libexec/kscreenlocker_greet >/dev/null 2>&1
+echo "echo 2" > /usr/sbin/runlevel
+
+tee /usr/sbin/policy-rc.d > /dev/null <<EOF
+#!/bin/sh
+exit 101
+EOF
+chmod +x /usr/sbin/policy-rc.d
+dpkg-divert --local --rename --add /sbin/initctl
+ln -fs /bin/true /sbin/initctl
 clear
+rm /usr/bin/systemctl ; cd / ; tar xf /etc/systemctl-service-shim.tar
 
 # Remove services not needed in WSL1
-# update-rc.d -f dbus remove >/dev/null 2>&1
+update-rc.d -f consolesetup.sh remove >/dev/null 2>&1
+update-rc.d -f nftables remove >/dev/null 2>&1
+update-rc.d -f irqbalance remove >/dev/null 2>&1
 update-rc.d -f whoopsie remove >/dev/null 2>&1
 update-rc.d -f acpid remove >/dev/null 2>&1
 update-rc.d -f plymouth remove >/dev/null 2>&1
@@ -27,7 +40,7 @@ update-rc.d -f pulseaudio-enable-autospawn remove >/dev/null 2>&1
 update-rc.d -f haveged remove >/dev/null 2>&1
 
 echo "WSLINSTANCENAME Runlevel" $1
-echo " "	
+echo " "
 
 if [ $1 -eq "0" ]; then
 bash -c "sleep 5 && wslconfig.exe /t WSLINSTANCENAME" &
@@ -36,12 +49,12 @@ fi
 [[ -z $1 ]] && { echo "Need to specify a run level"; exit 127; }
 [[ -d /etc/rc${run_level}.d/ ]] ||  { echo "Need to specify a run level"; exit 127; }
 for rc_service in /etc/rc${run_level}.d/K*; do
-        [[ -e "$rc_service" ]] && $rc_service stop >/dev/null 2>&1
+        [[ -e "$rc_service" ]] && $rc_service stop
 done
 for rc_service in /etc/rc${run_level}.d/S*; do
         [[ -e "$rc_service" ]] && $rc_service start
 done
-echo " "
+echo ""
 echo "2 = Multi-User System"
 echo "1 = Single-User System"
 echo "0 = Stop services and terminate instance."
