@@ -22,7 +22,7 @@ IF NOT EXIST "%TEMP%\windpi.ps1" POWERSHELL.EXE -ExecutionPolicy Bypass -Command
 FOR /f "delims=" %%a in ('powershell -ExecutionPolicy bypass -command "%TEMP%\windpi.ps1" ') do set "WINDPI=%%a"
 
 CLS
-ECHO [Kali-xRDP Installer 20211211]
+ECHO [Kali-xRDP Installer 20220208]
 ECHO:
 ECHO Hit Enter to use your current display scaling in Windows
 SET /p WINDPI=or set the desired value (1.0 to 3.0 in .25 increments) [%WINDPI%]: 
@@ -43,7 +43,7 @@ IF %DEFEXL%==X (POWERSHELL.EXE -Command "wget %BASE%/excludeWSL.ps1 -UseBasicPar
 
 REM ## Workaround potential DNS issue in WSL and update Keyring
 %GO% "rm -rf /etc/resolv.conf ; echo 'nameserver 1.1.1.1' > /etc/resolv.conf ; echo 'nameserver 8.8.8.8' >> /etc/resolv.conf ; chattr +i /etc/resolv.conf" >NUL 2>&1 
-%GO% "wget -q http://http.kali.org/kali/pool/main/k/kali-archive-keyring/kali-archive-keyring_2020.2_all.deb -O /tmp/kali-archive-keyring_2020.2_all.deb ; dpkg -i /tmp/kali-archive-keyring_2020.2_all.deb" > NUL
+%GO% "wget -q http://http.kali.org/kali/pool/main/k/kali-archive-keyring/kali-archive-keyring_2022.1_all.deb -O /tmp/kali-archive-keyring_2022.1_all.deb ; dpkg -i /tmp/kali-archive-keyring_2022.1_all.deb" > NUL
 
 REM ## Loop until we get a successful repo update
 :APTRELY
